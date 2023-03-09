@@ -58,7 +58,7 @@ class CsvParser:
             return False
 
     @staticmethod
-    def parse(file_path, delimiter=',', quotechar='"', quoting=0, date_format=None, return_errors=False):
+    def parse(file_path, delimiter=',', quotechar='"', quoting=False, date_format=None, return_errors=False):
         """
         Parses a CSV file and returns the data as a list of dictionaries.
 
@@ -66,7 +66,7 @@ class CsvParser:
             file_path (str): The path to the CSV file.
             delimiter (str): The delimiter used in the CSV file. Default is ','.
             quotechar (str): The character used to quote fields in the CSV file. Default is '"'.
-            quoting (int): The quoting mode used in the CSV file. Default is 0 (no quoting).
+            quoting (bool): The quoting mode used in the CSV file. Default is False (no quoting).
             date_format (str): The format used to parse dates in the CSV file. Default is None.
             return_errors (bool): Whether to return a list of errors or not. Default is False.
 
@@ -87,7 +87,7 @@ class CsvParser:
         errors = []
         for i, line in enumerate(lines[1:]):
             if line.strip():
-                if quoting == 0:
+                if not quoting:
                     values = line.strip().split(delimiter)
                 else:
                     values = line.strip().split(delimiter + quotechar)

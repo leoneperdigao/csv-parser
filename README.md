@@ -50,7 +50,7 @@ Parsing a CSV file with a custom delimiter and quoting:
 ```python
 from csv_parser.parser import CsvParser
 
-data = CsvParser.parse('data.csv', delimiter=';', quotechar="'", quoting=csv.QUOTE_ALL)
+data = CsvParser.parse('data.csv', delimiter=';', quotechar="'", quoting=True)
 ```
 
 Parsing a CSV file with custom date format:
@@ -118,7 +118,7 @@ print(stats)
 
 ### Output:
 
-```json
+```object
 {
     'Age': {'min': 25.0, 'max': 40.0, 'mean': 31.666666666666668, 'stdev': 7.637626260691952},
     'Weight': {'min': 65.2, 'max': 80.0, 'mean': 71.23333333333333, 'stdev': 6.236621979668926}
