@@ -45,7 +45,7 @@ Parsing a CSV file with default settings:
 from csv_parser.parser import CsvParser
 
 csv_parser = CsvParser()
-data = CsvParser.parse('data.csv')
+data = csv_parser.parse('data.csv')
 ```
 
 Parsing a CSV file with a custom delimiter and quoting:
