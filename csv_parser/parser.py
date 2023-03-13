@@ -35,7 +35,6 @@ class CsvParser:
         self.__date_format = date_format
         self.__return_errors = return_errors
 
-
     @staticmethod
     def __is_int(value):
         """
