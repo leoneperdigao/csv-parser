@@ -20,20 +20,22 @@ Import the CsvParser class and use the parse method to parse a CSV file:
 ```python
 from csv_parser.parser import CsvParser
 
-data = CsvParser.parse('path/to/file.csv')
+csv_parser = CsvParser()
+data = csv_parser.parse('path/to/file.csv')
 ```
 
-The `parse` method takes several optional arguments:
+The `class` takes several optional arguments:
 
-- `delimiter`: The delimiter used in the CSV file. Default is ,.
-- `quotechar`: The character used to quote fields in the CSV file. Default is ".
-- `quoting`: The quoting mode used in the CSV file. Default is 0 (no quoting).
-- `date_format`: The format used to parse dates in the CSV file. Default is None.
-- `return_errors`: Whether to return a list of errors or not. Default is False.
+- `encoding`: The encoding used in the CSV file. Default is `utf-8-sig`.
+- `delimiter`: The delimiter used in the CSV file. Default is `,`.
+- `quotechar`: The character used to quote fields in the CSV file. Default is `"`.
+- `quoting`: The quoting mode used in the CSV file. Default is `False` (no quoting).
+- `date_format`: The format used to parse dates in the CSV file. Default is `None`.
+- `return_errors`: Whether to return a list of errors or not. Default is `False`.
 
 If `return_errors` is True, a tuple is returned with the list of dictionaries and a list of errors.
 
-If the file cannot be opened or is empty, an empty list is returned.
+If the file cannot be opened or does not exist, an `FileNotFoundError` error will be raised.
 
 ## Examples
 
@@ -42,6 +44,7 @@ Parsing a CSV file with default settings:
 ```python
 from csv_parser.parser import CsvParser
 
+csv_parser = CsvParser()
 data = CsvParser.parse('data.csv')
 ```
 
@@ -50,7 +53,8 @@ Parsing a CSV file with a custom delimiter and quoting:
 ```python
 from csv_parser.parser import CsvParser
 
-data = CsvParser.parse('data.csv', delimiter=';', quotechar="'", quoting=True)
+csv_parser = CsvParser(delimiter=';', quotechar="'", quoting=True)
+data = csv_parser.parse('data.csv')
 ```
 
 Parsing a CSV file with custom date format:
@@ -58,7 +62,8 @@ Parsing a CSV file with custom date format:
 ```python
 from csv_parser.parser import CsvParser
 
-data = CsvParser.parse('data.csv', date_format='%Y-%m-%d %H:%M:%S')
+csv_parser = CsvParser(date_format='%Y-%m-%d %H:%M:%S')
+data = csv_parser.parse('data.csv')
 ```
 
 Parsing a CSV file and returning errors:
@@ -66,7 +71,8 @@ Parsing a CSV file and returning errors:
 ```python
 from csv_parser.parser import CsvParser
 
-data, errors = CsvParser.parse('data.csv', return_errors=True)
+csv_parser = CsvParser(return_errors=True)
+data, errors = csv_parser.parse('data.csv')
 ```
 
 ---

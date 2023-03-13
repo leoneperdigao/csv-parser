@@ -17,7 +17,8 @@ def compute_statistics(file_path: str) -> Dict[str, Dict[str, float]]:
         the outer dictionary are the column names, and the values are inner dictionaries containing the following keys:
         'min', 'max', 'mean', and 'stdev'.
     """
-    data = CsvParser.parse(file_path)
+    csv_parser = CsvParser()
+    data = csv_parser.parse(file_path)
 
     # Collect numeric values for each column
     columns = defaultdict(list)
